@@ -9,7 +9,6 @@ defmodule Polly.Application do
   def start(_type, _args) do
     children = [
       PollyWeb.Telemetry,
-      Polly.Repo,
       {DNSCluster, query: Application.get_env(:polly, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: Polly.PubSub},
       # Start the Finch HTTP client for sending emails
